@@ -16,12 +16,12 @@ app.use(
   })
 );
 
-// Home
+
 app.get("/", (req, res) => {
   res.send("Home Page - Student Exam Portal");
 });
 
-// Login
+
 app.post("/login", (req, res) => {
   const { username, role } = req.body;
 
@@ -36,7 +36,7 @@ app.post("/login", (req, res) => {
   res.send("Login successful");
 });
 
-// Dashboard
+
 app.get("/dashboard", (req, res) => {
   if (!req.session.user) {
     return res.send("Please login first");
@@ -47,7 +47,7 @@ app.get("/dashboard", (req, res) => {
   );
 });
 
-// Admin
+
 app.get("/admin", (req, res) => {
   if (!req.session.user) {
     return res.send("Please login first");
@@ -60,7 +60,7 @@ app.get("/admin", (req, res) => {
   res.send("Welcome Admin Panel");
 });
 
-// Logout
+
 app.get("/logout", (req, res) => {
   req.session.destroy(() => {
     res.clearCookie("role");
